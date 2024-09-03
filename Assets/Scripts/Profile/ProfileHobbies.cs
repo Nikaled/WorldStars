@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class ProfileHobbies : MonoBehaviour
 {
     [SerializeField] Sprite _inactiveSprite;
@@ -11,8 +11,10 @@ public class ProfileHobbies : MonoBehaviour
     [SerializeField] Image[] _wearStyle;
     private bool[] _hobbiesStatus;
     private bool[] _wearStyleStatus;
-
-
+    //[SerializeField] TextMeshProUGUI BooksField;
+    [SerializeField] TMP_InputField BooksField;
+    [SerializeField] TMP_InputField FilmsField;
+    [SerializeField] Button SaveProfileButton;
     private void Start()
     {
         DefaultSetupImages(_hobbies, ref _hobbiesStatus);
@@ -20,8 +22,9 @@ public class ProfileHobbies : MonoBehaviour
 
         LoadArrData(Geekplay.Instance.PlayerData.ChosenProfileHobbies, ref _hobbiesStatus, _hobbies);
         LoadArrData(Geekplay.Instance.PlayerData.ChosenProfileWearstyle, ref _wearStyleStatus, _wearStyle);
-        //LoadHobbies();
-        //LoadWearStyle();
+
+        BooksField.text = Geekplay.Instance.PlayerData.BooksInputFieldContent;
+        FilmsField.text = Geekplay.Instance.PlayerData.FilmsInputFieldContent;
     }
 
     private void DefaultSetupImages(Image[] _images, ref bool[] arr)
@@ -81,5 +84,20 @@ public class ProfileHobbies : MonoBehaviour
         _wearStyleStatus[WearIndex] = !_wearStyleStatus[WearIndex];
         Geekplay.Instance.PlayerData.ChosenProfileWearstyle = _wearStyleStatus;
         Geekplay.Instance.Save();
+    }
+
+    public void SaveBooksEditing(string BooksInputFieldContent)
+    {
+        Geekplay.Instance.PlayerData.BooksInputFieldContent = BooksInputFieldContent;
+        Geekplay.Instance.Save();
+    }
+    public void SaveFilmsEditing(string FilmInputFieldContent)
+    {
+        Geekplay.Instance.PlayerData.FilmsInputFieldContent = FilmInputFieldContent;
+        Geekplay.Instance.Save();
+    }
+    public void  AgreeToggle(bool Is)
+    {
+        SaveProfileButton.enabled = !Is;
     }
 }

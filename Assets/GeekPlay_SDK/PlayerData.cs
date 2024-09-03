@@ -23,6 +23,8 @@ public class PlayerData
     public UserCountryDropdown.UserProfileCountry userProfileCountry;
     public bool[] ChosenProfileHobbies;
     public bool[] ChosenProfileWearstyle;
+    public string BooksInputFieldContent;
+    public string FilmsInputFieldContent;
 
 
     /////InApps//////

@@ -25,7 +25,7 @@ public class UserCountryDropdown : DropdownWriter
         base.Start();
         currDropdown.value = (int)Geekplay.Instance.PlayerData.userProfileCountry;
     }
-    private void ChangeCountry(int countryIndex)
+    protected virtual void ChangeCountry(int countryIndex)
     {
         UserProfileCountry countryEnum = (UserProfileCountry)countryIndex;
         Geekplay.Instance.PlayerData.userProfileCountry = countryEnum;
