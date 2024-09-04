@@ -21,11 +21,12 @@ public class SearchBar : MonoBehaviour
 
     void OnSearchInputChanged(string input)
     {
-        // Очищаем контейнер с предложениями
-
-        StarCellManager.instance.HideAllStars();
-        // Если строка поиска пуста, не показываем ничего
-        if (string.IsNullOrEmpty(input)) return;
+        if (string.IsNullOrEmpty(input))
+        {
+            StarCellManager.instance.ShowSuggestions(null);
+            return;
+        }
+        
 
         // Находим все строки, которые содержат введённый текст
         var suggestions = data.Where(item => item.ToLower().Contains(input.ToLower())).ToList();

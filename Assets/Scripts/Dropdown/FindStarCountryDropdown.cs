@@ -12,7 +12,6 @@ public class FindStarCountryDropdown : UserCountryDropdown
     protected override void ChangeCountry(int countryIndex)
     {
         UserProfileCountry countryEnum = (UserProfileCountry)countryIndex;
-        Debug.Log("Current country:" + StarCellManager.instance.chosenCountryForStar);
-        StarCellManager.instance.CheckByCountry(countryEnum);
+        //StarCellManager.instance.CheckByCountry(countryEnum);
     }
 }
