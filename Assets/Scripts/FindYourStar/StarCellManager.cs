@@ -7,7 +7,8 @@ using TMPro;
 using static UserCountryDropdown;
 public class StarCellManager : MonoBehaviour
 {
-    public StarCell[] starCells;
+    [HideInInspector] public StarCell[] starCells;
+    public List<StarData> _starsData;
     public static StarCellManager instance;
     [HideInInspector] public UserCountryDropdown.UserProfileCountry chosenCountryForStar = UserCountryDropdown.UserProfileCountry.None;
     private StarCell.Profession _chosenProfession = StarCell.Profession.None;
@@ -25,18 +26,49 @@ public class StarCellManager : MonoBehaviour
     [SerializeField] Image[] _professionButtonImages;
     [SerializeField] TextMeshProUGUI _currentProfessionName;
     [SerializeField] TextMeshProUGUI[] _professionTextes;
-    [SerializeField] Sprite _activeSprite;
-    [SerializeField] Sprite _inactiveSprite;
     private string _defaultProfName = "C‘≈–¿";
+
+    [SerializeField] Sprite _inactiveSprite;
+    [SerializeField] Sprite _activeSprite;
+
+
+    [SerializeField] StarCell _starCellPrefab;
+    [SerializeField] Transform _starCellParent;
+    [SerializeField] GameObject _allStarsView;
+    [SerializeField] Button _showChosenStarsButton;
+
+    [SerializeField] StarCell _chosenStarCellPrefab;
+    [SerializeField] Transform _chosenStarCellParent;
+    [SerializeField] GameObject _chosenStarsView;
+    [SerializeField] Button _showAllStarsButton;
+
+
+    private StarCell[] _chosenStarCells;
+
+    public bool ChosenStarsChanged;
 
     private void Awake()
     {
         instance = this;
+        CreateStarCells(_starCellPrefab, _starCellParent, _starsData, ref starCells);
         _showedStars = starCells.ToList();
         _currentProfessionName.text = _defaultProfName;
         _currentCountryName.text = _defaultCountryName;
     }
 
+    private void CreateStarCells(StarCell prefab, Transform parent, List<StarData> StarsDataList, ref StarCell[] createdStarCellsArray)
+    {
+        List<StarCell> CreatedCells = new();
+        for (int i = 0; i < StarsDataList.Count; i++)
+        {
+            var newStar = Instantiate(prefab, parent);
+            newStar.SetupStarCell(StarsDataList[i]);
+            newStar.StarIsChosenView(false);
+            CreatedCells.Add(newStar);
+        }
+        createdStarCellsArray = new StarCell[CreatedCells.Count];
+        createdStarCellsArray = CreatedCells.ToArray();
+    }
     public void HideAllStars()
     {
         for (int i = 0; i < starCells.Length; i++)
@@ -45,13 +77,6 @@ public class StarCellManager : MonoBehaviour
         }
     }
 
-    public void ShowAllStars()
-    {
-        for (int i = 0; i < starCells.Length; i++)
-        {
-            starCells[i].gameObject.SetActive(true);
-        }
-    }
     private void CheckAllLogic()
     {
         _showedStars = starCells.ToList();
@@ -182,5 +207,42 @@ public class StarCellManager : MonoBehaviour
                 i--;
             }
         }
+    }
+
+
+    public void ShowChosenStars()
+    {
+        ShowChosenView(true);
+        if(_chosenStarCells != null)
+        {
+            if (ChosenStarsChanged)
+            {
+                for (int i = 0; i < _chosenStarCells.Length; i++)
+                {
+                    Destroy(_chosenStarCells[i].gameObject);
+                }
+                _chosenStarCells = null;
+                ChosenStarsChanged = false;
+            }
+        }
+
+        if (_chosenStarCells == null)
+        {
+            CreateStarCells(_chosenStarCellPrefab, _chosenStarCellParent, ChooseStarManager.instance.ChosenStarsData, ref _chosenStarCells);
+        }
+    }
+
+    private void ShowChosenView(bool Is)
+    {
+        _chosenStarsView.SetActive(Is);
+        _allStarsView.SetActive(!Is);
+        _showAllStarsButton.gameObject.SetActive(Is);
+        _showChosenStarsButton.gameObject.SetActive(!Is);
+    }
+    public void HideChosenStars()
+    {
+        _chosenStarsView.SetActive(false);
+        _allStarsView.SetActive(true);
+        ShowChosenView(false);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChooseStarManager : MonoBehaviour
 {
-    public List<StarData> _chosenStarsData = new();
+    public List<StarData> ChosenStarsData = new();
     public static ChooseStarManager instance;
 
     private void Awake()
@@ -14,22 +14,22 @@ public class ChooseStarManager : MonoBehaviour
 
     public void AddStarToChosen(StarData chosenStar)
     {
-        for (int i = 0; i < _chosenStarsData.Count; i++)
+        for (int i = 0; i < ChosenStarsData.Count; i++)
         {
-            if (_chosenStarsData[i].name == chosenStar.name)
+            if (ChosenStarsData[i].name == chosenStar.name)
             {
                 return;
             }
         }
-        _chosenStarsData.Add(chosenStar);
+        ChosenStarsData.Add(chosenStar);
     }
     public void RemoveStarFromChosen(StarData chosenStar)
     {
-        for (int i = 0; i < _chosenStarsData.Count; i++)
+        for (int i = 0; i < ChosenStarsData.Count; i++)
         {
-            if (_chosenStarsData[i].name == chosenStar.name)
+            if (ChosenStarsData[i].name == chosenStar.name)
             {
-                _chosenStarsData.RemoveAt(i);
+                ChosenStarsData.RemoveAt(i);
                 return;
             }
         }
