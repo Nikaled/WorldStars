@@ -9,7 +9,14 @@ public class BalanceView : MonoBehaviour
 
     private void OnEnable()
     {
-        Geekplay.Instance.PlayerData.CoinsChanged += ChangeBalanceText;
+        StartCoroutine(enCor());
+        IEnumerator enCor()
+        {
+            yield return new WaitForEndOfFrame();
+            ChangeBalanceText(Geekplay.Instance.PlayerData.Coins);
+            Geekplay.Instance.PlayerData.CoinsChanged += ChangeBalanceText;
+        }
+
     }
     private void ChangeBalanceText(int balance)
     {
