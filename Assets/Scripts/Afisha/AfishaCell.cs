@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using System;
 
 public class AfishaCell : MonoBehaviour
 {
     [HideInInspector] public AfishaDataSO AfishaData;
-    [HideInInspector] public string Date;
+    [HideInInspector] public DateTime Date;
     public TextMeshProUGUI DateText;
     [HideInInspector] public Sprite MainPicture;
     public Image PreviewImage;
@@ -22,14 +22,16 @@ public class AfishaCell : MonoBehaviour
     public void SetDataToFields(AfishaDataSO afishaData)
     {
         AfishaData = afishaData;
-        Date = AfishaData.Date;
+        DateTime d;
+        DateTime.TryParse(afishaData.Date, out d);
+        Date = d;
         MainPicture = AfishaData.MainPicture;
         ShortDescription = AfishaData.ShortDescription;
         Schedule = AfishaData.Schedule;
         MemberSlotsCount = AfishaData.MemberSlotsCount;
         StartPrice = AfishaData.StartPrice;
         PriceRateStep = AfishaData.PriceRateStep;
-        DateText.text = Date;
+        DateText.text = Date.ToString();
         ShortDescText.text = ShortDescription;
     }
     private void Start()

@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class SecondChildMenu : ChildMenu
 {
-    [SerializeField] ChildMenu ParentUI;
-
+    public ChildMenu ParentUI;
+    public bool DynamicField;
 
     private void OnDisable()
     {
-        ParentUI.SetupHeaderBackButton();
+        if (ParentUI != null)
+        {
+            ParentUI.SetupHeaderBackButton();
+        }
+        if (DynamicField)
+        {
+            ParentUI = null;
+        }
     }
 }

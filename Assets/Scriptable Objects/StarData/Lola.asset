@@ -17,3 +17,5 @@ MonoBehaviour:
   StarDescription: "\u041B\u043E\u043B\u0430 \u043D\u043E\u0440\u043C"
   StarProfession: 0
   StarCountry: 1
+  StarEvents:
+  - {fileID: 11400000, guid: 883165c8d12e7e44f9afb31dcd56f275, type: 2}

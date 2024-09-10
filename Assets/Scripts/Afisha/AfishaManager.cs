@@ -11,9 +11,14 @@ public class AfishaManager : MonoBehaviour
     private AfishaCell _pressedCell;
     public static AfishaManager instance;
     [SerializeField] ChosenEventUI _chosenEventUI;
+    [SerializeField] StarData DebugStarData;
     private void Awake()
     {
         instance = this;
+    }
+    private void Start()
+    {
+        SetStarEvents(DebugStarData);
     }
     public void SetStarEvents(StarData starData)
     {

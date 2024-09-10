@@ -13,6 +13,7 @@ public class AboutStarUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI StarInfo;
     [SerializeField] Image StarImage;
     [SerializeField] GameObject AboutStarUIObject;
+    [SerializeField] SecondChildMenu childMenuManager;
     private void Awake()
     {
         instance = this;
@@ -27,5 +28,9 @@ public class AboutStarUI : MonoBehaviour
  
         AboutStarUIObject.SetActive(true);
 
+    }
+    public void SetupParentUIOnClose(ChildMenu parentUI)
+    {
+        childMenuManager.ParentUI = parentUI;
     }
 }

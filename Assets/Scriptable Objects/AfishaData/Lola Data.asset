@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aaccf98dba37f4aa998378a1cc40d8, type: 3}
+  m_Name: Lola Data
+  m_EditorClassIdentifier: 
+  starData: {fileID: 11400000, guid: b9f2144c5f6e4e94a961cd78ec4e3283, type: 2}
+  Date: 17:00 01.01.2027
+  MainPicture: {fileID: 21300000, guid: 6ff60d2ed7f9f4765a8ee17201cc2a59, type: 3}
+  ShortDescription: "\u041B\u043E\u043B\u0430 \u0437\u043E\u0432\u0435\u0442 \u043D\u0430
+    \u0432\u0435\u0447\u0435\u0440\u0438\u043D\u043A\u0443!"
+  Schedule: "17:00 - \u041B\u043E\u043B\u0430 \u0432\u044B\u0445\u043E\u0434\u0438\u0442
+    \u043D\u0430 \u0441\u0446\u0435\u043D\u0443"
+  MemberSlotsCount: 11
+  StartPrice: 22
+  PriceRateStep: 33
