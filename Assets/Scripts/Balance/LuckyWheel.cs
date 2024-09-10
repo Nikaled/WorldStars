@@ -18,7 +18,7 @@ public class LuckyWheel : MonoBehaviour
 
     private int[] _slotRewards;
     private int _currentReward;
-    private float _secondsToOneSpin = 1f;
+    private float _secondsToOneSpin = 5f;
     private Vector3[] _wheelPosToSlots;
     private void Start()
     {
@@ -96,9 +96,14 @@ public class LuckyWheel : MonoBehaviour
         Vector3 EndRotation = _wheelPosToSlots[rewardIndex] + WheelToPointerCorrectingPos;
         Wheel.transform.DORotate(EndRotation, 0);
 
-        for (int i = 0; i < 3600; i++)
+        for (int i = 0; i < 8; i++)
         {
-            Wheel.transform.DOBlendableRotateBy(new Vector3(0, 0, 180), 1);
+            Ease e = Ease.Linear;
+            //if(i == 5)
+            //{
+            //    e = Ease.OutElastic;
+            //}
+            Wheel.transform.DOBlendableRotateBy(new Vector3(0, 0, 180), 3-i*0.2f).SetEase(e);
         }
         //Wheel.transform.DORotate( new Vector3(0,0,750), 5);
     }

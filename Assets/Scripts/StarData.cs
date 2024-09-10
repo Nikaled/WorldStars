@@ -10,4 +10,5 @@ public class StarData : ScriptableObject
     public string StarDescription;
     public StarCell.Profession StarProfession;
     public UserCountryDropdown.UserProfileCountry StarCountry;
+    public AfishaDataSO[] StarEvents;
 }
