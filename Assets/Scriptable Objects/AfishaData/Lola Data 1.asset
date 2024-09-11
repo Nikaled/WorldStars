@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57aaccf98dba37f4aa998378a1cc40d8, type: 3}
-  m_Name: Lola Data
+  m_Name: Lola Data 1
   m_EditorClassIdentifier: 
   starData: {fileID: 11400000, guid: b9f2144c5f6e4e94a961cd78ec4e3283, type: 2}
-  Date: 01.01.2027 17:22
+  Date: 17:00  01.12.2027
   MainPicture: {fileID: 21300000, guid: 6ff60d2ed7f9f4765a8ee17201cc2a59, type: 3}
   ShortDescription: "\u041B\u043E\u043B\u0430 \u0437\u043E\u0432\u0435\u0442 \u043D\u0430
     \u0432\u0435\u0447\u0435\u0440\u0438\u043D\u043A\u0443!"

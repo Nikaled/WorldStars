@@ -19,3 +19,4 @@ MonoBehaviour:
   StarCountry: 1
   StarEvents:
   - {fileID: 11400000, guid: 883165c8d12e7e44f9afb31dcd56f275, type: 2}
+  - {fileID: 11400000, guid: 01e2b3b8b35946d40a8789a6699d6029, type: 2}
